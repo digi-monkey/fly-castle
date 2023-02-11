@@ -1,12 +1,5 @@
-# File-explorer with Rust and Dioxus
+# FlyCastle
 
-This example shows how a Dioxus App can directly leverage system calls and libraries to bridge native functionality with the WebView renderer.
+FlyCastle is a desktop app written in rust to build a simple interface for users to handle Nostr relays effortlessly.
 
-![example](./image.png)
-
-
-## To run this example:
-
-```
-cargo run
-```
+the relay crate is forked from https://github.com/scsibug/nostr-rs-relay.git
