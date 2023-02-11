@@ -42,12 +42,14 @@ impl ClientConn {
         }
     }
 
-    #[must_use] pub fn subscriptions(&self) -> &HashMap<String, Subscription> {
+    #[must_use]
+    pub fn subscriptions(&self) -> &HashMap<String, Subscription> {
         &self.subscriptions
     }
 
     /// Check if the given subscription already exists
-    #[must_use] pub fn has_subscription(&self, sub: &Subscription) -> bool {
+    #[must_use]
+    pub fn has_subscription(&self, sub: &Subscription) -> bool {
         self.subscriptions.values().any(|x| x == sub)
     }
 
