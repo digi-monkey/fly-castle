@@ -1,5 +1,5 @@
 [package]
-name = "nostr-rs-relay"
+name = "private_relay"
 version = "0.8.2"
 edition = "2021"
 authors = ["Greg Heartsfield <scsibug@imap.cc>"]

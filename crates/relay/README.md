@@ -59,16 +59,16 @@ $ podman run -it --rm -p 7000:8080 \
   -v $(pwd)/config.toml:/usr/src/app/config.toml:ro,Z \
   --name nostr-relay nostr-rs-relay:latest
 
-Nov 19 15:31:15.013  INFO nostr_rs_relay: Starting up from main
-Nov 19 15:31:15.017  INFO nostr_rs_relay::server: listening on: 0.0.0.0:8080
-Nov 19 15:31:15.019  INFO nostr_rs_relay::server: db writer created
-Nov 19 15:31:15.019  INFO nostr_rs_relay::server: control message listener started
-Nov 19 15:31:15.019  INFO nostr_rs_relay::db: Built a connection pool "event writer" (min=1, max=4)
-Nov 19 15:31:15.019  INFO nostr_rs_relay::db: opened database "/usr/src/app/db/nostr.db" for writing
-Nov 19 15:31:15.019  INFO nostr_rs_relay::schema: DB version = 0
-Nov 19 15:31:15.054  INFO nostr_rs_relay::schema: database pragma/schema initialized to v7, and ready
-Nov 19 15:31:15.054  INFO nostr_rs_relay::schema: All migration scripts completed successfully.  Welcome to v7.
-Nov 19 15:31:15.521  INFO nostr_rs_relay::db: Built a connection pool "client query" (min=4, max=128)
+Nov 19 15:31:15.013  INFO private_relay: Starting up from main
+Nov 19 15:31:15.017  INFO private_relay::server: listening on: 0.0.0.0:8080
+Nov 19 15:31:15.019  INFO private_relay::server: db writer created
+Nov 19 15:31:15.019  INFO private_relay::server: control message listener started
+Nov 19 15:31:15.019  INFO private_relay::db: Built a connection pool "event writer" (min=1, max=4)
+Nov 19 15:31:15.019  INFO private_relay::db: opened database "/usr/src/app/db/nostr.db" for writing
+Nov 19 15:31:15.019  INFO private_relay::schema: DB version = 0
+Nov 19 15:31:15.054  INFO private_relay::schema: database pragma/schema initialized to v7, and ready
+Nov 19 15:31:15.054  INFO private_relay::schema: All migration scripts completed successfully.  Welcome to v7.
+Nov 19 15:31:15.521  INFO private_relay::db: Built a connection pool "client query" (min=4, max=128)
 ```
 
 Use a `nostr` client such as
@@ -104,16 +104,16 @@ The relay executable is now located in
 enabled, execute it with the `RUST_LOG` variable set:
 
 ```console
-$ RUST_LOG=warn,nostr_rs_relay=info ./target/release/nostr-rs-relay
-Dec 26 10:31:56.455  INFO nostr_rs_relay: Starting up from main
-Dec 26 10:31:56.464  INFO nostr_rs_relay::server: listening on: 0.0.0.0:8080
-Dec 26 10:31:56.466  INFO nostr_rs_relay::server: db writer created
-Dec 26 10:31:56.466  INFO nostr_rs_relay::db: Built a connection pool "event writer" (min=1, max=2)
-Dec 26 10:31:56.466  INFO nostr_rs_relay::db: opened database "./nostr.db" for writing
-Dec 26 10:31:56.466  INFO nostr_rs_relay::schema: DB version = 11
-Dec 26 10:31:56.467  INFO nostr_rs_relay::db: Built a connection pool "maintenance writer" (min=1, max=2)
-Dec 26 10:31:56.467  INFO nostr_rs_relay::server: control message listener started
-Dec 26 10:31:56.468  INFO nostr_rs_relay::db: Built a connection pool "client query" (min=4, max=8)
+$ RUST_LOG=warn,private_relay=info ./target/release/nostr-rs-relay
+Dec 26 10:31:56.455  INFO private_relay: Starting up from main
+Dec 26 10:31:56.464  INFO private_relay::server: listening on: 0.0.0.0:8080
+Dec 26 10:31:56.466  INFO private_relay::server: db writer created
+Dec 26 10:31:56.466  INFO private_relay::db: Built a connection pool "event writer" (min=1, max=2)
+Dec 26 10:31:56.466  INFO private_relay::db: opened database "./nostr.db" for writing
+Dec 26 10:31:56.466  INFO private_relay::schema: DB version = 11
+Dec 26 10:31:56.467  INFO private_relay::db: Built a connection pool "maintenance writer" (min=1, max=2)
+Dec 26 10:31:56.467  INFO private_relay::server: control message listener started
+Dec 26 10:31:56.468  INFO private_relay::db: Built a connection pool "client query" (min=4, max=8)
 ```
 
 You now have a running relay, on port `8080`.  Use a `nostr` client or

@@ -10,6 +10,7 @@ description = "File Explorer with Dioxus"
 dioxus = { version = "0.1.8", features = ["desktop"] }
 log = "0.4.14"
 simple_logger = "1.13.0"
+private_relay = { path = "../relay" }
 
 
 [package.metadata.bundle]
