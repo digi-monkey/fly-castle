@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        os: [macOS-latest]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set tag env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    
+    - name: Debug Print RELEASE_VERSION
+      run: echo "RELEASE_VERSION ${{ env.RELEASE_VERSION }}"
+
+    - name: Update local toolchain
+      run: |
+        rustup update
+        rustup component add clippy
+        rustup install nightly   
+               
+    - name: Toolchain info
+      run: |
+        cargo --version --verbose
+        rustc --version
+        cargo clippy --version 
+
+    - name: Build with Cargo
+      run: |
+        cargo build --release
+
+    - name: Upload binary to Github Releases
+      if: success()
+      uses: actions/upload-artifact@v2
+      with:
+        name: binary-${{ env.RELEASE_VERSION }}.tar.gz
+        path: |
+          target/release/fly-castle
+          
+#    - name: Publish to Github Releases
+#      if: success()
+#      uses: actions/create-release@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+#      with:
+#        tag_name: ${{ env.RELEASE_VERSION }}
+#        release_name: Release ${{ env.RELEASE_VERSION }}
+#        draft: false
+#        prerelease: false
+#        upload_url: ${{ steps.create_release.outputs.upload_url }}
+#        artifacts: binary-${{ env.RELEASE_VERSION }}.tar.gz
+#
