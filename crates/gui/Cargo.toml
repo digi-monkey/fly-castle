@@ -1,8 +1,8 @@
 [package]
-name = "file-explorer"
+name = "fly-castle"
 version = "0.1.0"
 edition = "2018"
-description = "File Explorer with Dioxus"
+description = "nostr private relay with gui by flycat"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -11,21 +11,21 @@ dioxus = { version = "0.1.8", features = ["desktop"] }
 log = "0.4.14"
 simple_logger = "1.13.0"
 private_relay = { path = "../relay" }
-
+dioxus-logger = "0.3.0"
+toml = "0.7.2"
 
 [package.metadata.bundle]
-name = "Dioxus File Explorerer"
-identifier = "com.doe.exampleapplication"
+name = "Fly Castle"
+identifier = "com.flycat.flycastle"
 icon = ["32x32.png", "128x128.png", "128x128@2x.png"]
 version = "1.0.0"
 resources = ["assets", "images/**/*.png", "secrets/public_key.txt"]
 copyright = "Copyright (c) Jane Doe 2016. All rights reserved."
 category = "Developer Tool"
-short_description = "An example application."
+short_description = "An gui for nostr private relay."
 long_description = """
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.
+A backup private nostr relay with easy gui. 
+a backup solution for you nostr data right on your daily computer.
+compatible with flycat web client.
 """
 osx_frameworks = []
